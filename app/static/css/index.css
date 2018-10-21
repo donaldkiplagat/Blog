@@ -10,3 +10,13 @@ body{
   margin-bottom: 10px;
   width:1000px;
 }
+h1{
+font-family: 'Montserrat', sans-serif;
+}
+h4{
+  font-family: 'Cabin', sans-serif;
+}
+p{
+  font-family: 'Cabin', sans-serif;
+  font-size: 17px;
+}
