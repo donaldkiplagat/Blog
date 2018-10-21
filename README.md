@@ -29,10 +29,10 @@ Given:A sign up/subscription/post feature<br>
 When: Email is validated <br>
 Then: Email is sent to the email registered with<br>
 
-* The program should display a user's profile picture<br>
-Given: A choice to upload a profile picture<br>
-When: User uploads profile picture<br>
-Then: The image should be displayed to the user<br>
+* The program should abstract data<br>
+Given: A user's role is "User"<br>
+When: User logs in<br>
+Then: Admin features are not shown<br>
 
 * Votes should be recorded and displayed to all the users<br>
 Given:A like/dislike option is given<br>
