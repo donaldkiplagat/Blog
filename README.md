@@ -45,6 +45,7 @@ Then: The value is added to the number of likes/comments<br>
 * Git and Github were used as my local and online repositories respectively.
 * Flask was used as the micro-framework
 * Heroku was used in deploying the live site
+* Gmail was used as the email sender 
 
 
 ### Support and contact details
