@@ -8,7 +8,7 @@ By: Donald Kiplagat
 This web-app allows the user to view,comment and like blog posts.The admin can add/delete posts and delete comments.
 
 ## Setup/Installation Requirements
-* Live site can be accessed from the following link https://pitch-donald.herokuapp.com/
+* Live site can be accessed from the following link https://blog-donald.herokuapp.com/
 * Pre-configured Admin details are:
 Email: donatello54611@gmail.com
 Password: donald
@@ -45,7 +45,7 @@ Then: The value is added to the number of likes/comments<br>
 * Git and Github were used as my local and online repositories respectively.
 * Flask was used as the micro-framework
 * Heroku was used in deploying the live site
-* Gmail was used as the email sender 
+* Gmail was used as the email sender
 
 
 ### Support and contact details
@@ -54,4 +54,4 @@ Then: The value is added to the number of likes/comments<br>
 
 ### License
 Moringa School
-Copyright (c)2018 **Pitch by Yours Truly-Donald Kiplagat**
+Copyright (c)2018 **Blog by Yours Truly-Donald Kiplagat**
