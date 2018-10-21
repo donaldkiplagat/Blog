@@ -84,6 +84,7 @@ class Comment(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+
 class Role(db.Model):
     __tablename__ = 'roles'
 
