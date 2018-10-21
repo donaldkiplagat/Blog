@@ -10,10 +10,9 @@ This web-app allows the user to view,comment and like blog posts.The admin can a
 ## Setup/Installation Requirements
 * Live site can be accessed from the following link https://blog-donald.herokuapp.com/
 * Pre-configured Admin details are:
-Email: donatello54611@gmail.com
+Email: donald.k.kiplagat@gmail.com
 Password: donald
-Username: donatello
-
+Username: donaldkiplagat
 
 ### Known Bugs
 One can like as many times as possible,not once for each user as was intended
