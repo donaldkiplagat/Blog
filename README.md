@@ -9,17 +9,20 @@ This web-app allows the user to view,comment and like blog posts.The admin can a
 
 ## Setup/Installation Requirements
 * Live site can be accessed from the following link https://pitch-donald.herokuapp.com/
+* Pre-configured Admin details are:
+Email: donatello54611@gmail.com
+Password: donald
+Username: donatello
 
 
 ### Known Bugs
-The panels are sometimes irregular due to different pitch sizes.
 One can like/dislike as many times as possible,not once for each user as was intended
 
 ### Behaviour Driven Development
-* The program should return all pitches on the home page<br>
-Given:All pitches<br>
+* The program should return all posts on the home page<br>
+Given:All posts<br>
 When: View is changed to home page<br>
-Then: Pitches from all users are shown<br>
+Then: All Posts are displayed<br>
 
 * One should receive an email when signing up<br>
 Given:A sign up feature<br>
