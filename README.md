@@ -34,10 +34,10 @@ Given: A user's role is "User"<br>
 When: User logs in<br>
 Then: Admin features are not shown<br>
 
-* Votes should be recorded and displayed to all the users<br>
-Given:A like/dislike option is given<br>
-When: User likes/dislikes a pitch <br>
-Then: The value is added to the number of likes/dislikes<br>
+* Likes/Comments should be recorded and displayed to all the users<br>
+Given:A like/comment option is given<br>
+When: User likes/comments a pitch <br>
+Then: The value is added to the number of likes/comments<br>
 
 
 ### Technologies Used
