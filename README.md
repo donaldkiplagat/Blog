@@ -16,7 +16,7 @@ Username: donatello
 
 
 ### Known Bugs
-One can like/dislike as many times as possible,not once for each user as was intended
+One can like as many times as possible,not once for each user as was intended
 
 ### Behaviour Driven Development
 * The program should return all posts on the home page<br>
