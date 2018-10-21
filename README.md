@@ -24,9 +24,9 @@ Given:All posts<br>
 When: View is changed to home page<br>
 Then: All Posts are displayed<br>
 
-* One should receive an email when signing up<br>
-Given:A sign up feature<br>
-When: User successfully signs up <br>
+* One should receive an email when signing up,subscribing and when a post is made<br>
+Given:A sign up/subscription/post feature<br>
+When: Email is validated <br>
 Then: Email is sent to the email registered with<br>
 
 * The program should display a user's profile picture<br>
