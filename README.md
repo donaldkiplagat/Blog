@@ -1,11 +1,11 @@
-# Pitch
+# Blog
 
-This python web-app was created in order to allow users to pitch their ideas and have them voted on.Developed during Moringa Core. This is Week 5's Independent Project.
-Date: 12th October 2018
+This python web-app was created to emulate a blog and the different user types available.Developed during Moringa Core. This is Week 6's Independent Project.
+Date: 19th October 2018
 By: Donald Kiplagat
 
 ## Description
-This web-app allows the user to submit their pitches,have them voted and commented upon.
+This web-app allows the user to view,comment and like blog posts.The admin can add/delete posts and delete comments.
 
 ## Setup/Installation Requirements
 * Live site can be accessed from the following link https://pitch-donald.herokuapp.com/
