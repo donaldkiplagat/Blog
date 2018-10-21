@@ -1,0 +1,12 @@
+body{
+  background-image: url("backgrey.jpg");
+}
+#subcribeform{
+  width:300px;
+  position: fixed;
+}
+.panel{
+  margin: auto;
+  margin-bottom: 10px;
+  width:1000px;
+}

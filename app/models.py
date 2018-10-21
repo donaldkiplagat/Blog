@@ -55,8 +55,8 @@ class Post(db.Model):
     post = db.Column(db.String)
     category = db.Column(db.String)
     like=db.Column(db.Integer)
-    dislike=db.Column(db.Integer)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
+
 
     def save_post(self):
         db.session.add(self)
@@ -78,6 +78,10 @@ class Comment(db.Model):
 
     def save_comment(self):
         db.session.add(self)
+        db.session.commit()
+
+    def delete_comment(self):
+        db.session.delete(self)
         db.session.commit()
 
 class Role(db.Model):

@@ -35,9 +35,8 @@ def new_post():
         post = form.post.data
         category = form.category.data
         like=0
-        dislike=0
 
-        new_post=Post(title=title,post=post,category=category,like=like,dislike=dislike)
+        new_post=Post(title=title,post=post,category=category,like=like)
 
         new_post.save_post()
 
@@ -65,19 +64,15 @@ def post(id):
 
         return redirect("/post/{post_id}".format(post_id=post.id))
 
-    elif request.args.get("dislike"):
-        post.dislike= post.dislike+1
-
-        db.session.add(post)
-        db.session.commit()
-
-        return redirect("/post/{post_id}".format(post_id=post.id))
-
     if form.validate_on_submit():
         comment=form.comment.data
         new_comment = Comment(id=id,comment=comment,user_id=current_user.id,post_id=post.id)
 
         new_comment.save_comment()
+
+
         return redirect("/post/{post_id}".format(post_id=post.id))
+
+
 
     return render_template('post.html',post=post,comments=comment,comment_form=form)

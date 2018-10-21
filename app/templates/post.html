@@ -11,9 +11,6 @@
       <div class="col-md-6">
          <a href="/post/{{post.id}}?like=1" ><i   class="fas fa-thumbs-up"> {{post.like}}</i></a>
       </div>
-      <div class="col-md-6">
-         <a href="/post/{{post.id}}?dislike=1"> <i  class="fas fa-thumbs-down">  {{ post.dislike}}</i></a>
-      </div>
     </div>
 
   <p>{{post.post}}</p>
@@ -25,6 +22,9 @@
   <h1>Comments</h1>
   {% for comment in comments %}
     <p>{{comment.comment}}</p>
+    <div class="col-md-6">
+       <a href="/post/{{post.id}}?delete=1" ><i   class="fas fa-thumbs-up">Delete Comment</i></a>
+    </div>
   {% endfor%}
 
 {% endblock %}

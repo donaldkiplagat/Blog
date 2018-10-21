@@ -2,27 +2,52 @@
 {% import 'macros.html' as macro%}
 {% import "bootstrap/wtf.html" as wtf %}
 
-
-
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/all.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://icon2.kisspng.com/20180320/upw/kisspng-computer-icons-idea-incandescent-light-bulb-clip-a-black-idea-icon-5ab0cae1715936.7716735415215357134643.jpg">
+{% endblock %}
 
 
 
 {% block content %}
+<br><br><br>
 
+<div class="col-md-8">
 {% for post in posts %}
-  <h1>{{post.title}}</h1>
-  <h4>{{post.category}}</h4>
-  <p>Category: {{post.category}}</p>
-  <p>Likes: {{post.like}}</p>
-  <p>Dislikes: {{post.dislike}}</p>
-  <br>
-  <p>{{post.post|truncate(350)}}</p>
-  <a href="#">Continue Reading</a>
 
+  <div class="panel">
+    <div class="panel-body responsive">
+      <div class="col-md-8">
+    <h1>{{post.title}}</h1>
+    <h4>{{post.posted.strftime('%Y-%m-%d')}}/{{post.category}}/<a href="/post/{{post.id}}?like=1"<i class="fas fa-heart"></i>{{post.like}}</a></h4>
+    <h4>{{post.category}}</h4>
+    <p>Category: {{post.category}}</p>
+    <p>Likes: {{post.like}}</p>
+    <p>Dislikes: {{post.dislike}}</p>
+  
+    <br>
+
+    <p>{{post.post|truncate(350)}}</p>
+    <a href="#">Continue Reading</a>
+  </div>
+  <div id="img" class="col-md-4">
+    <img src="{{url_for('static',filename='css/greyback.jpg')}}" class="img-rounded img-responsive">
+  </div>
+</div>
+  </div>
 {% endfor %}
+</div>
 
 
+<div class="col-md-4 ">
+<div class="panel" id="subcribeform">
+  <div class="panel-body">
   {{wtf.quick_form(subscriber_form)}}
   {{simplemde.load}}
-
+</div>
+</div>
+</div>
 {% endblock %}
