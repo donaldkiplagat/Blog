@@ -1,0 +1,52 @@
+from flask import render_template,request,redirect,url_for,abort
+from . import main
+from .forms import PostForm,SubscriberForm
+from ..import db,photos
+from ..models import User,Post,Role,Subscriber
+from flask_login import login_required,current_user
+import markdown2
+from ..email import mail_message
+
+#Views
+@main.route("/",methods=['GET','POST'])
+def index():
+    """
+    View root page function that returns the index page and its data
+    """
+    posts = Post.query.all()
+    form = SubscriberForm()
+    if form.validate_on_submit():
+        email = form.email.data
+
+        new_subscriber=Subscriber(email=email)
+        new_subscriber.save_subscriber()
+
+        mail_message("Subscription Received","email/welcome_subscriber",new_subscriber.email,subscriber=new_subscriber)
+
+    title = "Welcome to My Blog"
+    return render_template('index.html',title=title,posts=posts,subscriber_form=form)
+
+@main.route("/new_post",methods=['GET','POST'])
+@login_required
+def post():
+    form = PostForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        post = form.post.data
+        category = form.category.data
+        like=0
+        dislike=0
+
+        new_post=Post(title=title,post=post,category=category,like=like,dislike=dislike)
+
+        new_post.save_post()
+
+        subscribers=Subscriber.query.all()
+
+        for subscriber in subscribers:
+            mail_message("New Blog Post","email/new_post",subscriber.email,post=new_post)
+
+        return redirect(url_for('main.index'))
+
+    title="Make a post"
+    return render_template('new_post.html',title=title,post_form=form)

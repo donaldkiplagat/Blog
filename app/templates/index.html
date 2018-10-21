@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+
+
+
+{% block content %}
+
+{% for post in posts %}
+  <h1>{{post.title}}</h1>
+  <h4>{{post.category}}</h4>
+  <p>Category: {{post.category}}</p>
+  <p>Likes: {{post.like}}</p>
+  <p>Dislikes: {{post.dislike}}</p>
+  <br>
+  <p>{{post.post|truncate(350)}}</p>
+  <a href="#">Continue Reading</a>
+
+{% endfor %}
+
+
+  {{wtf.quick_form(subscriber_form)}}
+  {{simplemde.load}}
+
+{% endblock %}
