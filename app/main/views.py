@@ -28,7 +28,7 @@ def index():
 
 @main.route("/new_post",methods=['GET','POST'])
 @login_required
-def post():
+def new_post():
     form = PostForm()
     if form.validate_on_submit():
         title = form.title.data
@@ -50,3 +50,24 @@ def post():
 
     title="Make a post"
     return render_template('new_post.html',title=title,post_form=form)
+
+@main.route("/post/<int:id>",methods=['GET','POST'])
+def post(id):
+    post=Post.query.get_or_404(id)
+    if request.args.get("like"):
+        post.like = post.like+1
+
+        db.session.add(post)
+        db.session.commit()
+
+        return redirect("/post/{post_id}".format(post_id=post.id))
+
+    elif request.args.get("dislike"):
+        post.dislike= post.dislike+1
+
+        db.session.add(post)
+        db.session.commit()
+
+        return redirect("/post/{post_id}".format(post_id=post.id))
+
+    return render_template('post.html',post=post)
