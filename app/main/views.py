@@ -1,8 +1,8 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from .forms import PostForm,SubscriberForm
+from .forms import PostForm,SubscriberForm,CommentForm
 from ..import db,photos
-from ..models import User,Post,Role,Subscriber
+from ..models import User,Post,Role,Subscriber,Comment
 from flask_login import login_required,current_user
 import markdown2
 from ..email import mail_message
@@ -54,6 +54,9 @@ def new_post():
 @main.route("/post/<int:id>",methods=['GET','POST'])
 def post(id):
     post=Post.query.get_or_404(id)
+    comment = Comment.query.filter_by(post_id=id).all()
+    form=CommentForm()
+
     if request.args.get("like"):
         post.like = post.like+1
 
@@ -70,4 +73,11 @@ def post(id):
 
         return redirect("/post/{post_id}".format(post_id=post.id))
 
-    return render_template('post.html',post=post)
+    if form.validate_on_submit():
+        comment=form.comment.data
+        new_comment = Comment(id=id,comment=comment,user_id=current_user.id,post_id=post.id)
+
+        new_comment.save_comment()
+        return redirect("/post/{post_id}".format(post_id=post.id))
+
+    return render_template('post.html',post=post,comments=comment,comment_form=form)

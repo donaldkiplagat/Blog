@@ -1,19 +1,30 @@
 {% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
 
 {% block content %}
-<h2>{{post.title}}</h2>
-<h4>{{post.category}}</h4>
+  <h2>{{post.title}}</h2>
+  <h4>{{post.category}}</h4>
 
-<p>Like: {{post.like}}<p>
-  <div class="text-center">
-    <div class="col-md-6">
-       <a href="/post/{{post.id}}?like=1" ><i   class="fas fa-thumbs-up"> {{post.like}}</i></a>
+  <p>Like: {{post.like}}<p>
+    <div class="text-center">
+      <div class="col-md-6">
+         <a href="/post/{{post.id}}?like=1" ><i   class="fas fa-thumbs-up"> {{post.like}}</i></a>
+      </div>
+      <div class="col-md-6">
+         <a href="/post/{{post.id}}?dislike=1"> <i  class="fas fa-thumbs-down">  {{ post.dislike}}</i></a>
+      </div>
     </div>
-    <div class="col-md-6">
-       <a href="/post/{{post.id}}?dislike=1"> <i  class="fas fa-thumbs-down">  {{ post.dislike}}</i></a>
-    </div>
-  </div>
 
-<p>{{post.post}}</p>
+  <p>{{post.post}}</p>
+
+  <h1>Leave a Comment</h1>
+    {{wtf.quick_form(comment_form)}}
+    {{simplemde.load}}
+
+  <h1>Comments</h1>
+  {% for comment in comments %}
+    <p>{{comment.comment}}</p>
+  {% endfor%}
 
 {% endblock %}

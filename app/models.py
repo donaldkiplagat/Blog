@@ -78,7 +78,7 @@ class Comment(db.Model):
 
     def save_comment(self):
         db.session.add(self)
-        db.sesison.commit()
+        db.session.commit()
 
 class Role(db.Model):
     __tablename__ = 'roles'
