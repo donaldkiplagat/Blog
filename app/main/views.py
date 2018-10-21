@@ -69,19 +69,9 @@ def post(id):
 
         new_comment.save_comment()
 
-
         return redirect("/post/{post_id}".format(post_id=post.id))
 
-    subscriber_form = SubscriberForm()
-    if form.validate_on_submit():
-        email = form.email.data
-
-        new_subscriber=Subscriber(email=email)
-        new_subscriber.save_subscriber()
-
-        mail_message("Subscription Received","email/welcome_subscriber",new_subscriber.email,subscriber=new_subscriber)
-
-    return render_template('post.html',post=post,comments=comment,comment_form=form,subscriber_form=subscriber_form)
+    return render_template('post.html',post=post,comments=comment,comment_form=form)
 @main.route("/life",methods=['GET','POST'])
 def life():
     """

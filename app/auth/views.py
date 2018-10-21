@@ -30,7 +30,7 @@ def logout():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email = form.email.data, username = form.username.data,password = form.password.data,role_id=1)
+        user = User(email = form.email.data, username = form.username.data,password = form.password.data,role_id=2)
         db.session.add(user)
         db.session.commit()
 
@@ -39,3 +39,18 @@ def register():
         return redirect(url_for('auth.login'))
         title = "New Account"
     return render_template('auth/register.html',registration_form = form)
+
+@auth.route('/register_admin',methods = ["GET","POST"])
+@login_required
+def register_admin():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(email = form.email.data, username = form.username.data,password = form.password.data,role_id=1)
+        db.session.add(user)
+        db.session.commit()
+
+        mail_message("My Blog Admin","email/welcome_admin",user.email,user=user)
+
+        return redirect(url_for('auth.login'))
+        title = "New Account"
+    return render_template('auth/register_admin.html',registration_form = form)
